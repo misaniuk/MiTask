@@ -6,7 +6,7 @@
 	<body>
 		<referenceContainer name="content" remove="true"/>
 		<referenceContainer name="page.top">
-			<block as="form" class="Misa\Form\Block\Form" name="form" template="Misa_Form::form.phtml"/>
+			<block as="form" class="Misa\Form\Block\Form" name="form" template="Misa_Form::form.phtml" cacheable="false"/>
 		</referenceContainer>
 	</body>
 </page>

@@ -26,4 +26,18 @@
 			<argument name="resourceModel" xsi:type="string">Misa\Form\Model\ResourceModel\Country\Collection</argument>
 		</arguments>
 	</virtualType>
+	<type name="Misa\Form\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Misa\Form\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">miLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+				<item name="error" xsi:type="object">Misa\Form\Logger\ErrorHandler</item>
+				<item name="debug" xsi:type="object">Misa\Form\Logger\DebugHandler</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

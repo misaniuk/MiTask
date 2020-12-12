@@ -35,6 +35,7 @@ class CountryApiService
      * @var ClientFactory
      */
     private $clientFactory;
+    private $logger;
 
     /**
      * GitApiService constructor
@@ -45,12 +46,14 @@ class CountryApiService
     public function __construct(
         ClientFactory $clientFactory,
         ResponseFactory $responseFactory,
-        \Magento\Framework\App\ResourceConnection $resource
+        \Magento\Framework\App\ResourceConnection $resource,
+        \Misa\Form\Logger\Logger $logger
     ) {
         $this->connection = $resource->getConnection();
         $this->resource = $resource;
         $this->clientFactory = $clientFactory;
         $this->responseFactory = $responseFactory;
+        $this->logger = $logger;
     }
 
     /**
@@ -60,10 +63,9 @@ class CountryApiService
     {
         $repositoryName = 'magento/magento2';
         $response = $this->doRequest(static::API_REQUEST_ENDPOINT);
-        $status = $response->getStatusCode(); // 200 status code
+        $status = $response->getStatusCode(); 
         $responseBody = $response->getBody();
-        $responseContent = $responseBody->getContents(); // here you will have the API response in JSON format
-        // Add your logic using $responseContent
+        $responseContent = $responseBody->getContents();
 
         // Get Normalized Country List 
         $list = $this->getListFromResponse(
@@ -75,9 +77,10 @@ class CountryApiService
         try {
             $tableName = $this->resource->getTableName('misa_form_country');
             $this->connection->insertOnDuplicate($tableName, $list, ["name", "code"]);
+
+            $this->logger->debug('-> Getting data from country api', ['data' => $list]);
         } catch (\Exception $e) {
-           //Error
-           die($e->getMessage());
+            $this->logger->error('-> Error', ['data' => $e->getMessage()]);
         }
 
         return $responseContent;
@@ -114,6 +117,9 @@ class CountryApiService
                 'status' => $exception->getCode(),
                 'reason' => $exception->getMessage()
             ]);
+
+            $this->logger->error('-> doRequest Error', ['data' => $e->getMessage()]);
+
         }
 
         return $response;

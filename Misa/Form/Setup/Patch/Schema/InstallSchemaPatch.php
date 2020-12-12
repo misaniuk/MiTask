@@ -106,9 +106,15 @@ class InstallSchemaPatch implements SchemaPatchInterface
         $table_misa_form_country->addColumn(
             'name',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            null,
+            100,
             [],
             'name'
+        );
+
+        $table_misa_form_country->addIndex(
+            'misa_form_country',
+            ['name'],
+            ['type' => \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_UNIQUE]
         );
 
         $table_misa_form_country->addColumn(
