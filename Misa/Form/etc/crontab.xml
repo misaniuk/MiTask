@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="miform">
+		<job instance="Misa\Form\Cron\CountryList" method="execute" name="misa_form_countrylist">
+			<schedule>* * * * *</schedule>
+		</job>
+	</group>
+</config>

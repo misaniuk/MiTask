@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Misa_Form::Form" sortOrder="10" title="Form">
+					<resource id="Misa_Form::Form_save" sortOrder="10" title="Save Form"/>
+					<resource id="Misa_Form::Form_delete" sortOrder="20" title="Delete Form"/>
+					<resource id="Misa_Form::Form_update" sortOrder="30" title="Update Form"/>
+					<resource id="Misa_Form::Form_view" sortOrder="40" title="View Form"/>
+				</resource>
+				<resource id="Misa_Form::Country" sortOrder="10" title="Country">
+					<resource id="Misa_Form::Country_save" sortOrder="10" title="Save Country"/>
+					<resource id="Misa_Form::Country_delete" sortOrder="20" title="Delete Country"/>
+					<resource id="Misa_Form::Country_update" sortOrder="30" title="Update Country"/>
+					<resource id="Misa_Form::Country_view" sortOrder="40" title="View Country"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

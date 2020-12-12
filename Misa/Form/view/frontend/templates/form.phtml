@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var $block \Misa\Form\Block\Form
+ */
+?>
+<div>
+
+<h2 style="text-align: center;">Mi Form</h2>
+<form action="misa_form/form/save" method="post" id="mi_form" style="display: flex;justify-content: center;">
+<div style="margin-right: 2%;">
+    <div class="block"><input required class="input-text" id="name" name="name" type="text" placeholder="Name"></div>
+    <div class="block"><input required class="input-text" name="phone" type="text" placeholder="Phone"></div>
+	<div class="block" style="height: 32px;">
+		<input required type="checkbox" id="random_check" <?= rand(0,1) == 0 ? "" : "checked"; ?>>
+		<label for="random_check">Random check</label>
+	</div>
+	<input type="button" value="Clear" class="action primary" onclick="jQuery('#mi_form').trigger('reset')">
+</div>
+
+<div>
+	<div class="block"><input required name="email" type="email" placeholder="Email"></div>
+    <div class="block"><input required name="address" type="text" placeholder="Address"></div>
+    <?= $block->getListSelect(); ?>
+    <div style="justify-content: flex-end;display: flex;" class="block"><input type="submit" value="Submit" class="action primary"></div>
+</div>
+
+</form>
+</div>

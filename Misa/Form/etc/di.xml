@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Misa\Form\Api\FormRepositoryInterface" type="Misa\Form\Model\FormRepository"/>
+	<preference for="Misa\Form\Api\Data\FormInterface" type="Misa\Form\Model\Data\Form"/>
+	<preference for="Misa\Form\Api\Data\FormSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Misa\Form\Model\ResourceModel\Form\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">misa_form_form</argument>
+			<argument name="resourceModel" xsi:type="string">Misa\Form\Model\ResourceModel\Form\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="misa_form_form_listing_data_source" xsi:type="string">Misa\Form\Model\ResourceModel\Form\Grid\Collection</item>
+				<item name="misa_form_country_listing_data_source" xsi:type="string">Misa\Form\Model\ResourceModel\Country\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Misa\Form\Api\CountryRepositoryInterface" type="Misa\Form\Model\CountryRepository"/>
+	<preference for="Misa\Form\Api\Data\CountryInterface" type="Misa\Form\Model\Data\Country"/>
+	<preference for="Misa\Form\Api\Data\CountrySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Misa\Form\Model\ResourceModel\Country\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">misa_form_country</argument>
+			<argument name="resourceModel" xsi:type="string">Misa\Form\Model\ResourceModel\Country\Collection</argument>
+		</arguments>
+	</virtualType>
+</config>

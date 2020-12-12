@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">misa_form_form_listing.misa_form_form_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>misa_form_form_columns</spinner>
+		<deps>
+			<dep>misa_form_form_listing.misa_form_form_listing_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="misa_form_form_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Misa_Form::Form</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="misa_form_form_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>form_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="misa_form_form_columns">
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>form_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="form_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">name</label>
+			</settings>
+		</column>
+		<column name="email">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">email</label>
+			</settings>
+		</column>
+		<column name="phone">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">phone</label>
+			</settings>
+		</column>
+		<column name="address">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">address</label>
+			</settings>
+		</column>
+		<column name="country_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">country_id</label>
+			</settings>
+		</column>
+	</columns>
+</listing>
