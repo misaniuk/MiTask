@@ -12,6 +12,7 @@
 ### Endpoints
 - Admin Forms - ***misa_form/form/****
 - Admin Countries - ***misa_form/country/****
+- Frontend Form (Home Page) - **/** 
 
 ### Update Country List
 - by cron job **misa_form_countrylist**
