@@ -1,64 +1,18 @@
-# Mage2 Module Misa Form
+# Misa Form M2 Module
 
-    ``misa/module-form``
+### Install
+- `bin/magento enable:module Misa_Form`
+- `bin/magento setup:static-content:deploy Misa_Form`
+- `bin/magento setup:upgrade`
+- add new connection **mi** to your env.php file and create db **mi**
 
- - [Main Functionalities](#markdown-header-main-functionalities)
- - [Installation](#markdown-header-installation)
- - [Configuration](#markdown-header-configuration)
- - [Specifications](#markdown-header-specifications)
- - [Attributes](#markdown-header-attributes)
+### Cron
+- `bin/magento cron:run --group=miform`
 
+### Endpoints
+- Admin Forms - ***misa_form/form/****
+- Admin Countries - ***misa_form/country/****
 
-## Main Functionalities
-
-
-## Installation
-\* = in production please use the `--keep-generated` option
-
-### Type 1: Zip file
-
- - Unzip the zip file in `app/code/Misa`
- - Enable the module by running `php bin/magento module:enable Misa_Form`
- - Apply database updates by running `php bin/magento setup:upgrade`\*
- - Flush the cache by running `php bin/magento cache:flush`
-
-### Type 2: Composer
-
- - Make the module available in a composer repository for example:
-    - private repository `repo.magento.com`
-    - public repository `packagist.org`
-    - public github repository as vcs
- - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require misa/module-form`
- - enable the module by running `php bin/magento module:enable Misa_Form`
- - apply database updates by running `php bin/magento setup:upgrade`\*
- - Flush the cache by running `php bin/magento cache:flush`
-
-
-## Configuration
-
-
-
-
-## Specifications
-
- - Cronjob
-	- misa_form_countrylist
-
- - Block
-	- Form > form.phtml
-
- - Crongroup
-	- miform
-
- - Controller
-	- adminhtml > country/index/index
-
- - Controller
-	- adminhtml > form/index/index
-
-
-## Attributes
-
-
-
+### Update Country List
+- by cron job **misa_form_countrylist**
+- manually using **"Update"** button in Country grid
